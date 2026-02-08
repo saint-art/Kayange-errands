@@ -1,0 +1,29 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - main  # or master if your main branch is named master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Deployment placeholder
+        run: echo "Backend ready. Add deployment commands here."
